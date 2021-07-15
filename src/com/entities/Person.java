@@ -18,9 +18,18 @@ public class Person {
         return phoneNumber;
     }
 
+    @FieldName("IsAlive")
+    private boolean isAlive;
+
     public Person(String nickName, long phoneNumber) {
         this.nickName = nickName;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Person(String nickName, long phoneNumber, boolean isAlive) {
+        this.nickName = nickName;
+        this.phoneNumber = phoneNumber;
+        this.isAlive = isAlive;
     }
 
     @Override
@@ -34,5 +43,6 @@ public class Person {
     public Person() {
         this.nickName = "";
         this.phoneNumber = 0L;
+        this.isAlive = true;
     }
 }

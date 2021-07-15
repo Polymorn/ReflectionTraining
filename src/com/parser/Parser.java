@@ -21,7 +21,7 @@ public class Parser {
         for (int i = 0; i < fields.length; i++) {
             String str;
             fields[i].setAccessible(true);
-            if (stringChecker.isNumeric(fields[i].get(obj).toString())) {
+            if (stringChecker.isNumeric(fields[i].get(obj).toString()) || fields[i].getType().equals(boolean.class)) {
                 str = "\n\t\"" + getTextFromFieldOrAnnotation(fields[i]) + "\": " + fields[i].get(obj).toString();
             } else {
                 str = "\n\t\"" + getTextFromFieldOrAnnotation(fields[i]) + "\": " + "\"" + fields[i].get(obj).toString() + "\"";
@@ -53,6 +53,8 @@ public class Parser {
                     field.set(obj, Integer.valueOf(entry.getValue()));
                 } else if (compareFieldWithText(field, entry.getKey()) && field.getType().equals(double.class)) {
                     field.set(obj, Double.valueOf(entry.getValue()));
+                } else if (compareFieldWithText(field, entry.getKey()) && field.getType().equals(boolean.class)) {
+                    field.set(obj, Boolean.valueOf(entry.getValue()));
                 }
             }
         }
@@ -62,7 +64,7 @@ public class Parser {
 
     private HashMap<String, String> jsonTextSplit(String text) {
         HashMap<String, String> map = new HashMap<>();
-        String[] fieldsText = text.split(",");
+        String[] fieldsText = text.split(",\n");
         for (String fieldText : fieldsText) {
             fieldText = fieldText.replaceAll("[{}\" \n\t]", "");
             String[] str = fieldText.split(":");

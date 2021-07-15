@@ -22,6 +22,14 @@ public class House {
         this.location = location;
     }
 
+    @Override
+    public String toString() {
+        return "House{" +
+                "id=" + id +
+                ", location='" + location + '\'' +
+                '}';
+    }
+
     public House() {
 
     }

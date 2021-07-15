@@ -12,7 +12,7 @@ public class Main {
 
         Parser parser = new Parser();
 
-        Person person1 = new Person("Dumbass", 8_800_555_35_35L);
+        Person person1 = new Person("Dumbass", 8_800_555_35_35L, true);
         Auto auto1 = new Auto("Red", "N_314_PI");
         House house = new House(123, "Greenfield");
 
@@ -25,6 +25,18 @@ public class Main {
                 "\t\"Phone Number\": 4342341\n" +
                 "}";
 
+        String jsonText2 = "{\n" +
+                "\t\"color\": \"Red\",\n" +
+                "\t\"id\": \"N_314_PI\"\n" +
+                "}";
+
+        String jsonText3 = "{\n" +
+                "\t\"HouseNumber\": 103,\n" +
+                "\t\"location\": \"Frunze\"\n" +
+                "}";
+
         Person person2 = parser.deserialize(jsonText1, Person.class);
+        Auto auto2 = parser.deserialize(jsonText2, Auto.class);
+        House house2 = parser.deserialize(jsonText3, House.class);
     }
 }
