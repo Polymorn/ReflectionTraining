@@ -4,10 +4,9 @@ import com.abstractions.FieldName;
 
 public class House {
 
-    @FieldName("House Number")
+    @FieldName("HouseNumber")
     private int id;
 
-    @FieldName("Location")
     private String location;
 
     public int getId() {

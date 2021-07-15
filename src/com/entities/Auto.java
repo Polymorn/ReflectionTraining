@@ -2,12 +2,10 @@ package com.entities;
 
 import com.abstractions.FieldName;
 
-public class Car {
+public class Auto {
 
-    @FieldName("Color")
     private String color;
 
-    @FieldName("Car Number")
     private String id;
 
     public String getColor() {
@@ -18,12 +16,20 @@ public class Car {
         return id;
     }
 
-    public Car(String color, String id) {
+    public Auto(String color, String id) {
         this.color = color;
         this.id = id;
     }
 
-    public Car() {
+    @Override
+    public String toString() {
+        return "Auto{" +
+                "color='" + color + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
+
+    public Auto() {
 
     }
 }
